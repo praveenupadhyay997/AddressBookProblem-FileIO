@@ -9,6 +9,7 @@ namespace AddressBookProblem
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using System.IO;
     using System.Text;
     /// <summary>
     /// This is the higher order directory class containing value like dictionary and key input like address book
@@ -135,6 +136,7 @@ namespace AddressBookProblem
             Console.WriteLine("\nType y to continue in same address Book or any other key to exit");
             if (!(Console.ReadLine().ToLower() == "y"))
             {
+                FileInputOperation();
                 return;
             }
             else
@@ -302,6 +304,23 @@ namespace AddressBookProblem
                     List<string> name = dictionaryElement.Value;
                     foreach (string contactName in name)
                         Console.WriteLine(contactName + "\n");
+                }
+            }
+        }
+        /// <summary>
+        /// UC13- File input operation to enter the address book dictionary to the text file
+        /// </summary>
+        public void FileInputOperation()
+        {
+            //Opening the file path
+            string path = @"F:\Program files(x64)\Microsoft Visual Studio\BridgeLabzAssignments\AddressBookProblem-FileIO\AddressBookDictionary.txt";
+            //For the right path
+            //Using a input stream writer pushing the serialized data into the txt file.
+            if (File.Exists(path))
+            {
+                using (StreamWriter stream = File.AppendText(path))
+                {
+                    stream.Write(addressBookList);
                 }
             }
         }
