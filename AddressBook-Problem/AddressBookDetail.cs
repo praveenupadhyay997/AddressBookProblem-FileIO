@@ -27,6 +27,7 @@ namespace AddressBookProblem
         const int GET_COUNT_BY_STATE = 7;
         const int GET_COUNT_BY_CITY = 8;
         const int SORT_BY_NAME = 9;
+        const int SORT_BY_ATTRIBUTES = 10;
 
         /// <summary>
         /// Dictionary to store key as the address book name and the value as instance of the address book class
@@ -133,7 +134,9 @@ namespace AddressBookProblem
                 case SORT_BY_NAME:
                     addressBook.SortByName();
                     break;
-
+                case SORT_BY_ATTRIBUTES:
+                    addressBook.SortByAttributes();
+                    break;
                 default:
                     Console.WriteLine("\nInvalid option. Exiting from the address book");
                     return;

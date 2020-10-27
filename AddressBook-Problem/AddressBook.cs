@@ -380,6 +380,39 @@ namespace AddressBookProblem
                     + "\t" + contactObj.Value.zip + "\t" + contactObj.Value.phoneNumber + "\t" + contactObj.Value.emailId);
             }
         }
+        /// <summary>
+        /// UC12- Sorting by the other attributes to get a sorted list of contacts
+        /// </summary>
+        public void SortByAttributes()
+        {
+            Console.WriteLine("Enter the attribute by which you want to sort");
+            Console.WriteLine("1. City    2. State     3. Zip");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            //Using a sorted list and sorting by key of first name
+            SortedList<string, ContactDetails> sortedListOfContacts = new SortedList<string, ContactDetails>();
+            foreach (var contact in this.contactList)
+            {
+                if (choice == 1)
+                    sortedListOfContacts.Add(contact.city, contact);
+                else if (choice == 2)
+                    sortedListOfContacts.Add(contact.state, contact);
+                else if (choice == 3)
+                    sortedListOfContacts.Add(Convert.ToString(contact.zip), contact);
+                else
+                {
+                    Console.WriteLine("Wrong Choice.....");
+                    break;
+                }
+
+            }
+            Console.WriteLine("First Name  ----- Second Name ----- Address ----- City ----- State ----- Zip ----- Phone Number ----- Email Id");
+            foreach (var contactObj in sortedListOfContacts)
+            {
+                Console.WriteLine(contactObj.Value.firstName + "\t" + contactObj.Value.secondName + "\t"
+                    + "\t" + contactObj.Value.address + "\t" + contactObj.Value.city + "\t" + contactObj.Value.state
+                    + "\t" + contactObj.Value.zip + "\t" + contactObj.Value.phoneNumber + "\t" + contactObj.Value.emailId);
+            }
+        }
     }
 }
 
