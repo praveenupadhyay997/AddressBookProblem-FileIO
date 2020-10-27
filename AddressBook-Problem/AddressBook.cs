@@ -13,6 +13,8 @@ namespace AddressBookProblem
     {
         /// List Collection used to cover the domain of contact addition inside an address book
         public List<ContactDetails> contactList = new List<ContactDetails>();
+        /// List Collection used to cover the domain of contact addition inside an address book in a sorted manner by name
+        public List<ContactDetails> sortedContactList = new List<ContactDetails>();
         /// Field storing the name of the address book
         public string nameOfAddressBook = "";
         // Delegate declared to define a lambda function for checking duplicacy
@@ -357,6 +359,25 @@ namespace AddressBookProblem
             {
                 if (dictionaryElement.Key == city)
                     Console.WriteLine(dictionaryElement.Key + "=" + dictionaryElement.Value.Count);
+            }
+        }
+        /// <summary>
+        /// UC11- Sorting by the name to get a sorted list of contacts
+        /// </summary>
+        public void SortByName()
+        {
+            //Using a sorted list and sorting by key of first name
+            SortedList<string, ContactDetails> sortByName = new SortedList<string, ContactDetails>();
+            foreach(var contact in this.contactList)
+            {
+                sortByName.Add(contact.firstName, contact);
+            }
+            Console.WriteLine("First Name  ----- Second Name ----- Address ----- City ----- State ----- Zip ----- Phone Number ----- Email Id");
+            foreach (var contactObj in sortByName)
+            {
+                Console.WriteLine(contactObj.Value.firstName+"\t"+contactObj.Value.secondName + "\t"
+                    + "\t" + contactObj.Value.address + "\t" + contactObj.Value.city + "\t" + contactObj.Value.state
+                    + "\t" + contactObj.Value.zip + "\t" + contactObj.Value.phoneNumber + "\t" + contactObj.Value.emailId);
             }
         }
     }
