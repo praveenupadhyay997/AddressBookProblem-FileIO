@@ -33,7 +33,7 @@ namespace AddressBookProblem
             Console.WriteLine("3. Delete the address book");
             Console.WriteLine("4. Check if duplicate exist of the address book");
             Console.WriteLine("5. List Contacts in the address book by State");
-            Console.WriteLine("5. List Contacts in the address book by City");
+            Console.WriteLine("6. List Contacts in the address book by City");
             Console.WriteLine("Press any other Key to Exit!!!!!!!");
 
             int choice = Convert.ToInt32(Console.ReadLine());
@@ -68,6 +68,9 @@ namespace AddressBookProblem
                 case 6:
                     addressBookDetail.TraverseAllAddressBooksToOrderByCity();
                     break;
+
+                case 7:
+                    return;
 
                 default:
                     Console.WriteLine("Enter the correct choice Please!!!!!!");
