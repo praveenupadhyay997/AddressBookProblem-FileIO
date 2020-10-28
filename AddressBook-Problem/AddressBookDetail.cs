@@ -137,6 +137,7 @@ namespace AddressBookProblem
                 case SORT_BY_ATTRIBUTES:
                     addressBook.SortByAttributes();
                     break;
+
                 default:
                     Console.WriteLine("\nInvalid option. Exiting from the address book");
                     return;
