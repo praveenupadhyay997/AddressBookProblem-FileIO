@@ -26,6 +26,7 @@ namespace AddressBookProblem
         const int GET_ALL_CONTACTS_BY_CITY = 6;
         const int GET_COUNT_BY_STATE = 7;
         const int GET_COUNT_BY_CITY = 8;
+        const int FILE_IO = 9;
 
         /// <summary>
         /// Dictionary to store key as the address book name and the value as instance of the address book class
@@ -92,6 +93,7 @@ namespace AddressBookProblem
             Console.WriteLine("6. Display Contact Name as per City");
             Console.WriteLine("7. Display Count of contact as per State");
             Console.WriteLine("8. Display Count of contact as per City");
+            Console.WriteLine("9. Handle File Input Output Operation");
             Console.WriteLine("Press any Key to Exit!!!!!!!");
 
             switch (Convert.ToInt32(Console.ReadLine().ToLower()))
@@ -128,6 +130,10 @@ namespace AddressBookProblem
                     addressBook.DisplayCountByCity();
                     break;
 
+                case FILE_IO:
+                    FileReadWriteClass.GuidanceToFileIO(addressBook);
+                    break;
+
                 default:
                     Console.WriteLine("\nInvalid option. Exiting from the address book");
                     return;
@@ -136,7 +142,6 @@ namespace AddressBookProblem
             Console.WriteLine("\nType y to continue in same address Book or any other key to exit");
             if (!(Console.ReadLine().ToLower() == "y"))
             {
-                FileInputOperation();
                 return;
             }
             else
@@ -304,23 +309,6 @@ namespace AddressBookProblem
                     List<string> name = dictionaryElement.Value;
                     foreach (string contactName in name)
                         Console.WriteLine(contactName + "\n");
-                }
-            }
-        }
-        /// <summary>
-        /// UC13- File input operation to enter the address book dictionary to the text file
-        /// </summary>
-        public void FileInputOperation()
-        {
-            //Opening the file path
-            string path = @"F:\Program files(x64)\Microsoft Visual Studio\BridgeLabzAssignments\AddressBookProblem-FileIO\AddressBookDictionary.txt";
-            //For the right path
-            //Using a input stream writer pushing the serialized data into the txt file.
-            if (File.Exists(path))
-            {
-                using (StreamWriter stream = File.AppendText(path))
-                {
-                    stream.Write(addressBookList);
                 }
             }
         }
